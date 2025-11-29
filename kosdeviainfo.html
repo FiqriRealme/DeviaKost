@@ -1,0 +1,1283 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Kost — Mockup Desktop with Maps</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f3fbf3;
+    --panel:#ffffff;
+    --accent:#2f7b36;
+    --accent-2:#7fb56a;
+    --muted:#6c6c6c;
+    --shadow: 0 12px 28px rgba(10,30,10,0.08);
+    --card-shadow: 0 8px 20px rgba(7,40,15,0.08);
+    --radius-lg:26px;
+    --radius-md:14px;
+    --maxw:1100px;
+  }
+
+  .brand span {
+    font-weight: 1000;
+    font-size: 20px;
+    color: var(--accent);
+}
+
+
+header {
+    position: relative;
+}
+
+header .logo {
+    top: 15px;
+    right: 0;   /* ujung kanan */
+}
+
+header .brand-title {
+    top: 30px;
+    right: 100px;   /* sesuaikan agar tidak menabrak logo */
+}
+
+header .brand-title {
+    right: 120px;   /* sesuaikan agar teks tidak menimpa logo */
+    top: 30px;      /* sesuaikan agar sejajar */
+}
+
+
+
+  *{box-sizing:border-box}
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+    background-image: url(gambar/bgweb.jpg);
+    background-size: contain; 
+    background-repeat: repeat; 
+    background-position: top center;
+
+    color: #10331f;
+    display: flex;
+    justify-content: center;
+    padding: 36px 20px;
+}
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+      radial-gradient(rgba(255,255,255,0.6) 0 1px, transparent 2px),
+      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.or/2000/svg" width="800" height="800" viewBox="0 0 800 "><g fill="none" stroke="%23dfefe0" stroke-opacity="0.45" stroke-width="2"><path d="M60 200c40-60 140-40 200-20s120 40 180 10 120-70 180-20" /><path d="M80 420c40-60 140-40 200-20s120 40 180 10 120-70 180-20" /></g></svg>');
+    opacity:0.32;
+    z-index:0;
+    pointer-events:none;
+    mix-blend-mode:multiply;
+  }
+
+  /* PERBAIKAN CONTAINER - PASTIKAN TENGAH */
+.container {
+    width: 100%;
+    max-width: 1000px;
+    background: var(--bg);
+    border-radius: 18px;
+    padding: 32px;
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 1;
+    margin: 20px auto; /* Ini yang buat tetap di tengah */
+}
+
+
+  /* BRAND */
+  .brand {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1000;
+    pointer-events: auto;
+}
+
+.brand img {
+    width: 52px;
+    height: 52px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.brand span {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: 0.8px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+  .divider{
+    height:6px;
+    background:linear-gradient(90deg, rgba(127,181,106,0.45), rgba(46,139,87,1));
+    border-radius:6px;
+    margin:34px 0;
+    box-shadow:0 2px 0 rgba(255,255,255,0.6) inset;
+  }
+
+  .denah-section{
+  margin-top:28px;
+  margin-bottom:40px;
+}
+.denah-row{
+  display:flex;
+  gap:18px;
+}
+.denah-item{
+  flex:1;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:var(--card-shadow);
+  background:#fff;
+}
+.denah-item img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  display:block;
+}
+@media (max-width:900px){
+  .denah-row{ flex-direction:column; }
+}
+
+
+  .row{ display:flex; gap:32px; align-items:flex-start; margin-bottom: 40px; }
+  .col-left{ width:45%; position:relative; }
+  .hero-wrap{ width:100%; border-radius:48px 48px 12px 12px; overflow:hidden; background:linear-gradient(180deg,#4f8b3c,#2f6f2a); padding:18px; display:flex; justify-content:center; align-items:flex-start; box-shadow:var(--card-shadow); }
+  .hero-img{ width:100%; height:320px; object-fit:cover; border-radius:18px; display:block; box-shadow:0 18px 30px rgba(10,30,10,0.08); }
+
+  .col-right{ width:55%; }
+  h1.main{ margin:0 0 8px; font-size:42px; line-height:1; color:var(--accent); font-weight:700; display:flex; align-items:center; gap:10px; }
+  h1.main .dot{ width:14px; height:14px; background:#d49b00; border-radius:50%; }
+
+  p.lead{ margin:8px 0 18px; color:#2c5b3a; font-size:14px; max-width:620px; }
+  .info{ display:flex; gap:24px; align-items:flex-start; margin-bottom:18px; }
+  .info .left{ min-width:160px; color:#2a4d36; font-size:13px; line-height:1.5; }
+  .info .left b{ display:block; margin-bottom:6px; color:#1b3b24 }
+  .info .right{ flex:1; }
+
+  .mini-cards{ display:flex; gap:18px; margin-top:8px; }
+  .mini{ width:180px; background:var(--panel); border-radius:10px; overflow:hidden; box-shadow:var(--card-shadow); text-align:center; }
+  .mini img{ width:100%; height:100px; object-fit:cover; display:block }
+  .mini .caption{ padding:10px; font-size:13px; color:var(--muted) }
+
+  .thin-line{ height:6px; background:linear-gradient(90deg, rgba(127,181,106,0.22), rgba(46,139,87,0.35)); border-radius:6px; margin:28px 0; }
+
+  .lower{ display:flex; gap:40px; align-items:flex-start; margin-bottom: 40px; }
+
+  .features{ width:32%; list-style:none; padding:0; margin:0; }
+  .features li{ display:flex; gap:12px; align-items:center; margin:18px 0; color:#215a3a; font-weight:600; font-size:15px; }
+  .features li small{ display:block; font-weight:400; color:var(--muted); font-size:13px }
+
+  .ico{ width:38px;height:38px;border-radius:10px;background:rgba(47,123,54,0.08);display:flex;align-items:center;justify-content:center;color:var(--accent); box-shadow:0 4px 10px rgba(10,30,10,0.03); }
+
+  .showcase{ width:68%; position:relative; min-height:220px; }
+  .showcase .bg-card{ width:100%; height:200px; background:#efe9e0; border-radius:18px; display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:var(--card-shadow); }
+  .showcase .bg-card img{ width:100%; height:100%; object-fit:cover; opacity:0.95; }
+
+  .showcase .front-card{ width:220px; height:140px; position:absolute; left:20%; top:40%; transform:translateY(-40%); background:var(--accent); border-radius:14px; padding:8px; box-shadow:0 18px 30px rgba(10,30,10,0.08); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .showcase .front-card img{ width:100%; height:100%; object-fit:cover; border-radius:10px; border:6px solid rgba(255,255,255,0.6); box-shadow:0 12px 22px rgba(0,0,0,0.08); }
+
+  .gallery-row{ display:flex; gap:18px; margin-top:28px; }
+  .gallery-row .g{ flex:1; border-radius:12px; overflow:hidden; box-shadow:var(--card-shadow); }
+  .gallery-row img{ width:100%; height:110px; object-fit:cover; display:block }
+
+  .section-title{
+    font-size:20px;
+    color:var(--accent);
+    margin:12px 0 10px;
+    font-weight:700;
+  }
+
+  .full-gallery{ margin-top:30px; margin-bottom: 40px; }
+  .gallery-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:12px;
+  }
+  .gallery-grid .item{ background:var(--panel); border-radius:12px; overflow:hidden; box-shadow:var(--card-shadow); padding:8px; text-align:left; }
+  .gallery-grid img{ width:100%; height:140px; object-fit:cover; border-radius:8px; display:block; }
+
+  .lingkungan{
+    display:flex;
+    gap:22px;
+    align-items:center;
+    margin-top:26px;
+    margin-bottom: 40px;
+  }
+  .lingkungan .tree{
+    width:36%;
+    position:relative;
+  }
+  .lingkungan .tree img{ width:100%; border-radius:18px; display:block; }
+  .lingkungan .desc{ flex:1; padding:12px 18px; background:var(--panel); border-radius:12px; box-shadow:var(--card-shadow); }
+  .lingkungan .desc h3{ margin:0 0 8px; color:var(--accent); font-size:22px; }
+  .lingkungan .desc ul{ margin:8px 0 0; padding-left:18px; color:var(--muted); }
+
+  .keamanan{ display:flex; gap:18px; align-items:flex-start; margin-top:26px; margin-bottom: 40px; }
+  .keamanan .img{ width:40%; border-radius:12px; overflow:hidden; box-shadow:var(--card-shadow); }
+  .keamanan .img img{ width:100%; height:220px; object-fit:cover; display:block; }
+  .keamanan .txt{ flex:1; background:var(--panel); padding:18px; border-radius:12px; box-shadow:var(--card-shadow); }
+
+  .lokasi-section{ margin-top:28px; margin-bottom: 40px; }
+  .maps-row{ display:flex; gap:18px; align-items:flex-start; }
+  .map-box{ flex:1; height:340px; border-radius:12px; overflow:hidden; box-shadow:var(--card-shadow); border:1px solid rgba(15,138,74,0.06); background:#fff; }
+  .map-box iframe{ width:100%; height:100%; border:0; display:block; }
+
+  .cta{ margin-top:26px; display:flex; gap:14px; }
+  .btn{ padding:12px 18px; background:var(--panel); border-radius:12px; color:var(--accent); text-decoration:none; font-weight:700; box-shadow:var(--card-shadow); }
+  footer{ text-align:center; color:var(--muted); margin-top:34px; font-size:13px; }
+
+  .lightbox{ position:fixed; inset:0; background:rgba(0,0,0,0.78); display:none; align-items:center; justify-content:center; z-index:9999; padding:28px; }
+  .lightbox.active{ display:flex }
+  .lightbox img{ max-width:90%; max-height:80%; border-radius:8px; box-shadow:0 18px 40px rgba(0,0,0,0.6) }
+
+  @media (max-width:1100px){ .container{padding:26px} .row{gap:18px} .hero-img{height:260px} }
+  @media (max-width:900px){
+    .row{flex-direction:column}
+    .col-left,.col-right{width:100%}
+    .lower{flex-direction:column}
+    .features{width:100%; order:2}
+    .showcase{width:100%; order:1}
+    .hero-img{height:260px}
+    .gallery-grid{ grid-template-columns: repeat(2,1fr) }
+    .maps-row{ flex-direction:column }
+    .map-box{ height:300px }
+  }
+  @media (max-width:480px){
+    .gallery-grid{ grid-template-columns:1fr }
+  }
+
+.keamanan .left .img img, 
+.keamanan .right .img img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.cta-wrapper {
+    margin-top: 40px;
+}
+
+.cta-item {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    padding: 18px 22px;
+    border-radius: 16px;
+    margin-bottom: 22px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.cta-icon {
+    width: 52px;    /* Sedikit lebih besar */
+    height: 52px;   /* Sedikit lebih besar */
+    margin-right: 18px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 4px;   /* Kurangi padding agar logo lebih besar */
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+
+.cta-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 18px rgba(0,0,0,0.18);
+}
+
+.cta-icon {
+    width: 48px;
+    height: 48px;
+    margin-right: 18px;
+}
+
+.gallery-row {
+  display: flex;
+  gap: 22px;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.gallery-item {
+  flex: 1;
+  text-align: center;
+}
+
+.gallery-item img {
+  width: 100%;
+  border-radius: 12px;
+  height: 190px;
+  object-fit: cover;
+  box-shadow: var(--card-shadow);
+}
+
+.gallery-caption {
+  margin-top: 8px;
+  font-size: 15px;
+  color: #333;
+}
+  
+@media(max-width:900px){
+  .gallery-row {
+    flex-direction: column;
+  }
+}
+
+.fasilitas-item {
+    display: flex;
+    align-items: flex-start; /* sejajarkan ke atas */
+}
+
+.fasilitas-text {
+    padding-top: 0 !important; /* hilangkan jarak atas */
+    margin-top: 0 !important;
+}
+
+.map-box {
+    flex: 1;
+    height: 0; /* Reset height */
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(15,138,74,0.06);
+    background: #fff;
+    position: relative; /* Tambahkan ini */
+}
+
+.map-box iframe {
+    position: absolute; /* Tambahkan ini */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Ubah dari 100% menjadi 100% dari parent */
+    border: 0;
+    display: block;
+}
+
+.keamanan .img {
+    width: 40%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+}
+
+.keamanan .img img {
+    width: 100%;
+    height: 250px; /* Tinggi tetap */
+    object-fit: cover; /* Untuk foto - crop jika perlu */
+    object-position: center; /* Fokus ke tengah gambar */
+    display: block;
+}
+
+/* FLOATING CONTACT - IMAGE ONLY */
+.floating-contact {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+}
+
+.contact-btn {
+    display: block;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    background: none;
+    border: none;
+}
+
+.contact-btn img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 8px;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover img {
+    transform: translateY(-5px) scale(1.1);
+    filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.35));
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 100%;
+    right: 50%;
+    transform: translateX(50%);
+    background: var(--accent);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--accent);
+}
+
+.contact-btn:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .floating-contact {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .contact-btn img {
+        width: 55px;
+        height: 55px;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-contact {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .contact-btn img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Tablet (900px ke bawah) */
+@media (max-width: 900px) {
+    .container {
+        padding: 20px;
+        margin: 15px;
+        width: calc(100% - 30px);
+    }
+    
+    .row {
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    .col-left, .col-right {
+        width: 100%;
+    }
+    
+    .hero-img {
+        height: 280px;
+    }
+    
+    .lower {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .features {
+        width: 100%;
+        order: 2;
+    }
+    
+    .showcase {
+        width: 100%;
+        order: 1;
+        min-height: auto;
+    }
+    
+    .showcase .front-card {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        width: 200px;
+        height: 130px;
+        margin: -60px auto 20px;
+    }
+    
+    .gallery-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .gallery-item img {
+        height: 200px;
+    }
+    
+    .maps-row {
+        flex-direction: column;
+    }
+    
+    .map-box {
+        height: 250px;
+        margin-bottom: 15px;
+    }
+    
+    .denah-row {
+        flex-direction: column;
+    }
+    
+    .lingkungan {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .lingkungan .tree {
+        width: 100%;
+    }
+    
+    .keamanan {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .keamanan .img {
+        width: 100%;
+    }
+    
+    .keamanan .img img {
+        height: 200px;
+    }
+    
+    .info {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .info .left {
+        min-width: auto;
+    }
+    
+    .mini-cards {
+        justify-content: center;
+    }
+    
+    .brand {
+        position: relative;
+        top: 0;
+        right: 0;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+}
+
+/* Mobile (600px ke bawah) */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 15px;
+        margin: 10px;
+        width: calc(100% - 20px);
+    }
+    
+    h1.main {
+        font-size: 32px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .hero-img {
+        height: 220px;
+    }
+    
+    .features li {
+        font-size: 16px;
+        margin: 15px 0;
+    }
+    
+    .features li small {
+        font-size: 14px;
+    }
+    
+    .ico {
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .gallery-grid img {
+        height: 160px;
+    }
+    
+    .section-title {
+        font-size: 20px;
+    }
+    
+    .cta-item {
+        padding: 15px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .cta-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .floating-contact {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .contact-btn img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Small Mobile (480px ke bawah) */
+@media (max-width: 480px) {
+    .container {
+        padding: 12px;
+        border-radius: 12px;
+    }
+    
+    h1.main {
+        font-size: 28px;
+    }
+    
+    .hero-img {
+        height: 180px;
+    }
+    
+    .hero-wrap {
+        border-radius: 30px 30px 8px 8px;
+        padding: 12px;
+    }
+    
+    .mini-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .mini {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .showcase .bg-card {
+        height: 160px;
+    }
+    
+    .showcase .front-card {
+        width: 160px;
+        height: 110px;
+        margin: -50px auto 15px;
+    }
+    
+    .gallery-item img {
+        height: 160px;
+    }
+    
+    .map-box {
+        height: 200px;
+    }
+    
+    .features li {
+        font-size: 15px;
+        gap: 12px;
+    }
+    
+    .lingkungan .desc h3 {
+        font-size: 20px;
+    }
+    
+    .keamanan .txt h3 {
+        font-size: 20px;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-width: 900px) and (orientation: landscape) {
+    .hero-img {
+        height: 200px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+}
+
+/* Perbaikan untuk elemen spesifik di mobile */
+@media (max-width: 900px) {
+    /* Pastikan gambar tidak overflow */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Perbaikan spacing */
+    .divider {
+        margin: 25px 0;
+    }
+    
+    /* Text alignment yang lebih baik */
+    .lingkungan .desc,
+    .keamanan .txt {
+        text-align: left;
+    }
+    
+    /* Perbaikan font size untuk readability */
+    body {
+        font-size: 15px;
+    }
+    
+    p.lead {
+        font-size: 15px;
+    }
+}
+
+/* ========== GALLERY MOBILE SWIPE ========== */
+
+/* Default desktop */
+.gallery-row {
+  display: flex;
+  gap: 22px;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.gallery-item {
+  flex: 1;
+  text-align: center;
+  min-width: 0; /* Prevent flex item overflow */
+}
+
+.gallery-item img {
+  width: 100%;
+  border-radius: 12px;
+  height: 190px;
+  object-fit: cover;
+  box-shadow: var(--card-shadow);
+}
+
+.gallery-caption {
+  margin-top: 8px;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Mobile Swipe Version */
+@media (max-width: 900px) {
+  .gallery-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 15px;
+    margin: 15px -15px 20px -15px;
+    padding: 10px 15px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling iOS */
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+  }
+  
+  .gallery-row::-webkit-scrollbar {
+    display: none; /* Hide scrollbar Chrome/Safari */
+  }
+  
+  .gallery-item {
+    flex: 0 0 auto;
+    width: 280px; /* Fixed width untuk swipe */
+    scroll-snap-align: start;
+    text-align: center;
+  }
+  
+  .gallery-item img {
+    height: 180px;
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .gallery-caption {
+    font-size: 14px;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+}
+
+/* Small Mobile Optimization */
+@media (max-width: 480px) {
+  .gallery-item {
+    width: 250px; /* Lebih kecil di mobile sangat kecil */
+  }
+  
+  .gallery-item img {
+    height: 160px;
+  }
+  
+  .gallery-row {
+    gap: 12px;
+    padding: 8px 15px;
+  }
+}
+
+/* Optional: Tambahkan scroll indicator */
+.gallery-row::after {
+  content: '';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(90deg, transparent, var(--bg));
+  pointer-events: none;
+}
+
+/* Untuk judul gallery di mobile */
+@media (max-width: 900px) {
+  .section-title[style*="font-size:20px"] {
+    font-size: 18px !important;
+    margin: 15px 0 5px;
+  }
+}
+
+/* ========== PERBAIKAN MAPS UNTUK MOBILE ========== */
+
+/* Default desktop */
+.lokasi-section { 
+    margin-top: 28px; 
+    margin-bottom: 40px; 
+}
+
+.maps-row { 
+    display: flex; 
+    gap: 18px; 
+    align-items: flex-start; 
+}
+
+.map-box { 
+    flex: 1; 
+    height: 340px; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    box-shadow: var(--card-shadow); 
+    border: 1px solid rgba(15,138,74,0.06); 
+    background: #fff; 
+}
+
+.map-box iframe { 
+    width: 100%; 
+    height: 100%; 
+    border: 0; 
+    display: block; 
+}
+
+/* Mobile Version */
+@media (max-width: 900px) {
+    .lokasi-section {
+        margin: 20px 0 30px 0;
+    }
+    
+    .maps-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .map-box {
+        height: 250px; /* Lebih pendek di mobile */
+        width: 100%;
+        border-radius: 10px;
+    }
+    
+    .map-box iframe {
+        height: 100%;
+    }
+    
+    /* Pastikan maps responsive */
+    .map-box {
+        position: relative;
+        min-height: 250px;
+    }
+}
+
+/* Small Mobile Optimization */
+@media (max-width: 480px) {
+    .map-box {
+        height: 200px; /* Lebih pendek di mobile kecil */
+    }
+    
+    .lokasi-section .section-title {
+        font-size: 20px;
+        margin: 10px 0 15px 0;
+    }
+}
+
+/* Fix untuk aspect ratio maps */
+@media (max-width: 900px) {
+    .map-box {
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        position: relative;
+    }
+    
+    .map-box iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+}
+
+
+</style>
+</head>
+<body>
+    
+  <div class="container" role="main">
+
+    <div class="brand">
+      <img src="gambar/logo33.png" alt="Logo">
+      <span>KOST DEVIA</span>
+    </div>
+
+
+    <!-- HERO -->
+    <div class="row">
+      <div class="col-left">
+        <div class="hero-wrap">
+          <img class="hero-img clickable" src="gambar/terasbelakang.png" alt="Gedung Kost">
+        </div>
+      </div>
+
+      <div class="col-right">
+        <h1 class="main">Selamat Datang <span class="dot"></span></h1>
+        <p class="lead">Perkenalkan Kami dari Kost Devia ...</p>
+
+        <div class="info">
+          <div class="left">
+            <b>Pemilik</b>
+            Heri Supriyadi (Alwi)
+            <div style="height:10px"></div>
+            <b>Kontak</b>
+            0818-0222-4424
+            <div style="height:10px"></div>
+            <b>Lokasi</b>
+            Kp. Sidamulih, Kel. Mugarsari, Kec. Tamansari, Kab. Tasikmalaya, Jawa Barat
+          </div>
+
+          <div class="right">
+            <div class="mini-cards">
+              <div class="mini clickable">
+                <img src="gambar/gobras.png">
+                <div class="caption">Tempat Strategis</div>
+              </div>
+              <div class="mini clickable">
+                <img src="gambar/alam1.png">
+                <div class="caption">Lingkungan Asri</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- FEATURES -->
+    <div class="lower">
+      <ul class="features">
+        <li><div class="ico">🛏️</div> Kasur dan Lemari<small>Kamar pribadi lengkap</small></li>
+        <li><div class="ico">🍳</div> Dapur Umum<small>Area memasak bersama</small></li>
+        <li><div class="ico">🚿</div> Kamar Mandi Dalam<small>Privat dan bersih</small></li>
+        <li><div class="ico">📶</div> Wifi<small>Akses internet 24/7</small></li>
+        <li><div class="ico">⏰</div> Akses 24 Jam<small>Fleksibel</small></li>
+        <li><div class="ico">🔐</div> Sistem Keamanan<small>CCTV</small></li>
+      </ul>
+
+      <div class="showcase">
+        <div class="bg-card clickable">
+          <img src="gambar/fotongobrol.png">
+        </div>
+        <div class="front-card clickable">
+          <img src="gambar/kosanea.png">
+        </div>
+
+        <div class="gallery-row">
+          <div class="g clickable"><img src="gambar/unsil2.png"></div>
+          <div class="g clickable"><img src="gambar/lingkungan.png"></div>
+          <div class="g clickable"><img src="gambar/terasdepan.png"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- GALLERY -->
+<div class="section-title" style="margin-top:40px;">Gallery</div>
+
+<!-- BARIS 1 – LUAR -->
+<div class="section-title" style="margin-top:18px; font-size:20px; color:#0b6b2f;">Luar</div>
+
+<div class="gallery-row">
+  
+  <div class="gallery-item">
+    <img src="gambar/fotodepan.png" alt="Kondisi Lingkungan">
+    <div class="gallery-caption">Tampilan Gerbang</div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="gambar/terasbelakang.png" alt="Tampilan Teras">
+    <div class="gallery-caption">Tampilan Teras</div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="gambar/terasdepan.png" alt="Foto Lain">
+    <div class="gallery-caption">Tampilan Depan</div>
+  </div>
+
+</div>
+
+
+<!-- BARIS 2 – DALAM -->
+<div class="section-title" style="margin-top:28px; font-size:20px; color:#0b6b2f;">Dalam</div>
+
+<div class="gallery-row">
+  
+  <div class="gallery-item">
+    <img src="gambar/fotokamar.jpg" alt="Tampilan Kamar">
+    <div class="gallery-caption">Tampilan Kamar</div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="gambar/fotowc.jpg" alt="Tampilan Kamar Mandi">
+    <div class="gallery-caption">Tampilan Kamar Mandi</div>
+  </div>
+
+  <div class="gallery-item">
+    <img src="gambar/dapurkos.jpg" alt="Tampilan Lain">
+    <div class="gallery-caption">Tampilan Dapur</div>
+  </div>
+
+</div>
+
+    <div class="divider"></div>
+
+    <!-- LINGKUNGAN -->
+    <div class="lingkungan">
+      <div class="tree clickable"><img src="gambar/pohon.png"></div>
+      <div class="desc">
+        <h3>LINGKUNGAN</h3>
+        <p>Kost kami berada di daerah pemukiman warga yang memiiki jarak dengan  Jalan Raya serta kondisi lingkungan yang dekat dengan daerah persawahan dan penghijauan yang masih terjaga sehingga membuat suasana sekitaran Kostan Asri.</p>
+        <ul>
+          <li>Masjid — 140 m</li>
+          <li>Polsek Tamansari — 450 m</li>
+          <li>Puskesmas — 480 m</li>
+          <li>Kampus — 900 m</li>
+          <li>Pasar Gegernoong — 2.5 km</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- KEAMANAN -->
+    <div class="keamanan">
+      <div class="img clickable"><img src="gambar/cctv.png"></div>
+      <div class="txt">
+        <h3>KEAMANAN</h3>
+        <p>Keamanan dari kost kami akan segera dilengkapi dengan adanya sistem kemanan berupa CCTV. Dikarenakan Akses kostan kami 24 jam yang dimana gerbang memiliki sisitem kuncian yang bisa dibuka kapan saja hal ini mendorong untuk segera dilengkapi dengan kemananan yang canggih. </p>
+                <p>Tentunya selain keamanan yang berasal dari Internal, Di daerah Kost kami juga sudah bekerja sama dengan Karnag Taruna yang sudah memiliki sebuah badan kemanan masyarakat yang bekerja sama dengan beberapa kost lainnya, sehingga dari catatan yang ada tingkat kriminalitas seperti pencurian belum ada kasus.  </p>
+        <p>Selain itu bila terjadi hal yang tidak inginkan juga, Kost Kami sangat dekat dengan Polsek Tamansari yang senantiasa menerima laporan 24 jam yang hanya menempuh 2-4 menit perjalanan sehingga mobilitas dalam pelaporan kehilangan akan dapat segera teratasi. </p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- LOKASI -->
+    <div class="lokasi-section">
+      <div class="section-title">LOKASI</div>
+      <div class="maps-row">
+        <div class="map-box">
+          <iframe src="https://maps.google.com/maps?q=-7.3799612,108.2492591&z=18&t=k&output=embed"></iframe>
+        </div>
+
+        <div class="map-box">
+          <iframe src="https://maps.google.com/maps?q=-7.3799612,108.2492591&z=18&t=m&output=embed"></iframe>
+        </div>
+
+        
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    
+
+<!-- DENAH -->
+<div class="denah-section">
+  <div class="section-title">DENAH</div>
+  <div class="denah-row">
+    <div class="denah-item clickable">
+      <img src="gambar/denah kosan.png" alt="Denah kost">
+    </div>
+    <div class="denah-item clickable">
+      <img src="gambar/denah kamar.png" alt="Denah kamar">
+    </div>
+
+    <p>Tahun Pembangunan
+3 Juli 2024</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+
+
+    <div class="cta-wrapper">
+
+    <!-- CTA WhatsApp -->
+    <a href="https://wa.me/6281802224424" class="cta-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="cta-icon">
+        <span>Langsung Bicara Di WhatsApp</span>
+    </a>
+
+    <!-- CTA Maps -->
+    <a href="https://www.google.com/maps/place/Kos+Devia/@-7.380027,108.2492987,21z/data=!4m12!1m5!3m4!2zN8KwMjInNDcuOSJTIDEwOMKwMTQnNTcuMyJF!8m2!3d-7.3799612!4d108.2492591!3m5!1s0x2e6f5900048ba96d:0x5b5c675d4c109eec!8m2!3d-7.3799612!4d108.2492591!16s%2Fg%2F11xzttkcsq?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D" class="cta-item">
+        <img src="gambar/gmaps (2).png" class="cta-icon">
+        <span>Pergi Ke Maps</span>
+    </a>
+
+</div>
+    <footer>© <span id="year"></span> Kost Devia — Semua hak dilindungi.</footer>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img">
+  </div>
+
+<!-- Floating Contact Button -->
+<div class="floating-contact">
+    <a href="https://wa.me/628812071682" class="contact-btn" target="_blank" title="Laporkan Bug">
+        <img src="gambar/atmin.png" alt="Contact Admin">
+        <span class="tooltip">Laporkan Bug</span>
+    </a>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+
+  function openLightbox(src){
+    lbImg.src = src;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('active');
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.clickable').forEach(el => {
+    el.style.cursor = 'zoom-in';
+    el.addEventListener('click', () => {
+      const foundImg = el.tagName === 'IMG' ? el : el.querySelector('img');
+      if(foundImg) openLightbox(foundImg.src);
+    });
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if(e.target === lightbox || e.target === lbImg){
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeLightbox();
+  });
+
+  // Tambahkan di script yang sudah ada
+document.addEventListener('DOMContentLoaded', function() {
+  const galleryRows = document.querySelectorAll('.gallery-row');
+  
+  galleryRows.forEach(gallery => {
+    // Add swipe indicators
+    let isScrolling;
+    
+    gallery.addEventListener('scroll', function() {
+      // Clear timeout saat scroll
+      window.clearTimeout(isScrolling);
+      
+      // Set timeout untuk detect scroll end
+      isScrolling = setTimeout(function() {
+        gallery.classList.remove('scrolling');
+      }, 66);
+      
+      gallery.classList.add('scrolling');
+    });
+  });
+});
+
+// Tambahkan di script yang sudah ada
+document.addEventListener('DOMContentLoaded', function() {
+    const mapIframes = document.querySelectorAll('.map-box iframe');
+    
+    mapIframes.forEach(iframe => {
+        // Force reload iframe jika tidak load
+        setTimeout(() => {
+            if (iframe.contentWindow && iframe.contentWindow.document.body.innerHTML === '') {
+                const src = iframe.src;
+                iframe.src = '';
+                setTimeout(() => {
+                    iframe.src = src;
+                }, 100);
+            }
+        }, 2000);
+        
+        // Tambahkan class loaded ketika iframe selesai load
+        iframe.addEventListener('load', function() {
+            this.classList.add('loaded');
+        });
+    });
+});
+
+</script>
+</body>
+</html>
