@@ -1,11 +1,5 @@
-<!doctype html>
-<html lang="id">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Kost — Mockup Desktop with Maps</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<style>
+assets/css.style.css
+
   :root{
     --bg:#f3fbf3;
     --panel:#ffffff;
@@ -964,320 +958,54 @@ header .brand-title {
     }
 }
 
+body {
+    background-color: #0b6b2f; /* Hijau solid untuk HP */
+    background-image: none; /* No image di HP biar cepat load */
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
 
-</style>
-</head>
-<body>
-    
-  <div class="container" role="main">
+.container {
+    background: white;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
 
-    <div class="brand">
-      <img src="gambar/logo33.png" alt="Logo">
-      <span>KOST DEVIA</span>
-    </div>
-
-
-    <!-- HERO -->
-    <div class="row">
-      <div class="col-left">
-        <div class="hero-wrap">
-          <img class="hero-img clickable" src="gambar/terasbelakang.png" alt="Gedung Kost">
-        </div>
-      </div>
-
-      <div class="col-right">
-        <h1 class="main">Selamat Datang <span class="dot"></span></h1>
-        <p class="lead">Perkenalkan Kami dari Kost Devia ...</p>
-
-        <div class="info">
-          <div class="left">
-            <b>Pemilik</b>
-            Heri Supriyadi (Alwi)
-            <div style="height:10px"></div>
-            <b>Kontak</b>
-            0818-0222-4424
-            <div style="height:10px"></div>
-            <b>Lokasi</b>
-            Kp. Sidamulih, Kel. Mugarsari, Kec. Tamansari, Kab. Tasikmalaya, Jawa Barat
-          </div>
-
-          <div class="right">
-            <div class="mini-cards">
-              <div class="mini clickable">
-                <img src="gambar/gobras.png">
-                <div class="caption">Tempat Strategis</div>
-              </div>
-              <div class="mini clickable">
-                <img src="gambar/alam1.png">
-                <div class="caption">Lingkungan Asri</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- FEATURES -->
-    <div class="lower">
-      <ul class="features">
-        <li><div class="ico">🛏️</div> Kasur dan Lemari<small>Kamar pribadi lengkap</small></li>
-        <li><div class="ico">🍳</div> Dapur Umum<small>Area memasak bersama</small></li>
-        <li><div class="ico">🚿</div> Kamar Mandi Dalam<small>Privat dan bersih</small></li>
-        <li><div class="ico">📶</div> Wifi<small>Akses internet 24/7</small></li>
-        <li><div class="ico">⏰</div> Akses 24 Jam<small>Fleksibel</small></li>
-        <li><div class="ico">🔐</div> Sistem Keamanan<small>CCTV</small></li>
-      </ul>
-
-      <div class="showcase">
-        <div class="bg-card clickable">
-          <img src="gambar/fotongobrol.png">
-        </div>
-        <div class="front-card clickable">
-          <img src="gambar/kosanea.png">
-        </div>
-
-        <div class="gallery-row">
-          <div class="g clickable"><img src="gambar/unsil2.png"></div>
-          <div class="g clickable"><img src="gambar/lingkungan.png"></div>
-          <div class="g clickable"><img src="gambar/terasdepan.png"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- GALLERY -->
-<div class="section-title" style="margin-top:40px;">Gallery</div>
-
-<!-- BARIS 1 – LUAR -->
-<div class="section-title" style="margin-top:18px; font-size:20px; color:#0b6b2f;">Luar</div>
-
-<div class="gallery-row">
-  
-  <div class="gallery-item">
-    <img src="gambar/fotodepan.png" alt="Kondisi Lingkungan">
-    <div class="gallery-caption">Tampilan Gerbang</div>
-  </div>
-
-  <div class="gallery-item">
-    <img src="gambar/terasbelakang.png" alt="Tampilan Teras">
-    <div class="gallery-caption">Tampilan Teras</div>
-  </div>
-
-  <div class="gallery-item">
-    <img src="gambar/terasdepan.png" alt="Foto Lain">
-    <div class="gallery-caption">Tampilan Depan</div>
-  </div>
-
-</div>
-
-
-<!-- BARIS 2 – DALAM -->
-<div class="section-title" style="margin-top:28px; font-size:20px; color:#0b6b2f;">Dalam</div>
-
-<div class="gallery-row">
-  
-  <div class="gallery-item">
-    <img src="gambar/fotokamar.jpg" alt="Tampilan Kamar">
-    <div class="gallery-caption">Tampilan Kamar</div>
-  </div>
-
-  <div class="gallery-item">
-    <img src="gambar/fotowc.jpg" alt="Tampilan Kamar Mandi">
-    <div class="gallery-caption">Tampilan Kamar Mandi</div>
-  </div>
-
-  <div class="gallery-item">
-    <img src="gambar/dapurkos.jpg" alt="Tampilan Lain">
-    <div class="gallery-caption">Tampilan Dapur</div>
-  </div>
-
-</div>
-
-    <div class="divider"></div>
-
-    <!-- LINGKUNGAN -->
-    <div class="lingkungan">
-      <div class="tree clickable"><img src="gambar/pohon.png"></div>
-      <div class="desc">
-        <h3>LINGKUNGAN</h3>
-        <p>Kost kami berada di daerah pemukiman warga yang memiiki jarak dengan  Jalan Raya serta kondisi lingkungan yang dekat dengan daerah persawahan dan penghijauan yang masih terjaga sehingga membuat suasana sekitaran Kostan Asri.</p>
-        <ul>
-          <li>Masjid — 140 m</li>
-          <li>Polsek Tamansari — 450 m</li>
-          <li>Puskesmas — 480 m</li>
-          <li>Kampus — 900 m</li>
-          <li>Pasar Gegernoong — 2.5 km</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- KEAMANAN -->
-    <div class="keamanan">
-      <div class="img clickable"><img src="gambar/cctv.png"></div>
-      <div class="txt">
-        <h3>KEAMANAN</h3>
-        <p>Keamanan dari kost kami akan segera dilengkapi dengan adanya sistem kemanan berupa CCTV. Dikarenakan Akses kostan kami 24 jam yang dimana gerbang memiliki sisitem kuncian yang bisa dibuka kapan saja hal ini mendorong untuk segera dilengkapi dengan kemananan yang canggih. </p>
-                <p>Tentunya selain keamanan yang berasal dari Internal, Di daerah Kost kami juga sudah bekerja sama dengan Karnag Taruna yang sudah memiliki sebuah badan kemanan masyarakat yang bekerja sama dengan beberapa kost lainnya, sehingga dari catatan yang ada tingkat kriminalitas seperti pencurian belum ada kasus.  </p>
-        <p>Selain itu bila terjadi hal yang tidak inginkan juga, Kost Kami sangat dekat dengan Polsek Tamansari yang senantiasa menerima laporan 24 jam yang hanya menempuh 2-4 menit perjalanan sehingga mobilitas dalam pelaporan kehilangan akan dapat segera teratasi. </p>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- LOKASI -->
-    <div class="lokasi-section">
-      <div class="section-title">LOKASI</div>
-      <div class="maps-row">
-        <div class="map-box">
-          <iframe src="https://maps.google.com/maps?q=-7.3799612,108.2492591&z=18&t=k&output=embed"></iframe>
-        </div>
-
-        <div class="map-box">
-          <iframe src="https://maps.google.com/maps?q=-7.3799612,108.2492591&z=18&t=m&output=embed"></iframe>
-        </div>
-
-        
-      </div>
-    </div>
-
-    <div class="divider"></div>
-    
-
-<!-- DENAH -->
-<div class="denah-section">
-  <div class="section-title">DENAH</div>
-  <div class="denah-row">
-    <div class="denah-item clickable">
-      <img src="gambar/denah kosan.png" alt="Denah kost">
-    </div>
-    <div class="denah-item clickable">
-      <img src="gambar/denah kamar.png" alt="Denah kamar">
-    </div>
-
-    <p>Tahun Pembangunan
-3 Juli 2024</p>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-
-
-    <div class="cta-wrapper">
-
-    <!-- CTA WhatsApp -->
-    <a href="https://wa.me/6281802224424" class="cta-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="cta-icon">
-        <span>Langsung Bicara Di WhatsApp</span>
-    </a>
-
-    <!-- CTA Maps -->
-    <a href="https://www.google.com/maps/place/Kos+Devia/@-7.380027,108.2492987,21z/data=!4m12!1m5!3m4!2zN8KwMjInNDcuOSJTIDEwOMKwMTQnNTcuMyJF!8m2!3d-7.3799612!4d108.2492591!3m5!1s0x2e6f5900048ba96d:0x5b5c675d4c109eec!8m2!3d-7.3799612!4d108.2492591!16s%2Fg%2F11xzttkcsq?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D" class="cta-item">
-        <img src="gambar/gmaps (2).png" class="cta-icon">
-        <span>Pergi Ke Maps</span>
-    </a>
-
-</div>
-    <footer>© <span id="year"></span> Kost Devia — Semua hak dilindungi.</footer>
-  </div>
-
-  <div class="lightbox" id="lightbox">
-    <img id="lightbox-img">
-  </div>
-
-<!-- Floating Contact Button -->
-<div class="floating-contact">
-    <a href="https://wa.me/628812071682" class="contact-btn" target="_blank" title="Laporkan Bug">
-        <img src="gambar/atmin.png" alt="Contact Admin">
-        <span class="tooltip">Laporkan Bug</span>
-    </a>
-</div>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  const lightbox = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lightbox-img');
-
-  function openLightbox(src){
-    lbImg.src = src;
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLightbox(){
-    lightbox.classList.remove('active');
-    lbImg.src = '';
-    document.body.style.overflow = '';
-  }
-
-  document.querySelectorAll('.clickable').forEach(el => {
-    el.style.cursor = 'zoom-in';
-    el.addEventListener('click', () => {
-      const foundImg = el.tagName === 'IMG' ? el : el.querySelector('img');
-      if(foundImg) openLightbox(foundImg.src);
-    });
-  });
-
-  lightbox.addEventListener('click', (e) => {
-    if(e.target === lightbox || e.target === lbImg){
-      closeLightbox();
+/* Background khusus untuk HP */
+@media (max-width: 768px) {
+    body {
+        background: linear-gradient(135deg, #cad198 0%, #c8e999 100%);
+        /* Bisa juga pakai gambar khusus HP */
+        /* background-image: url('gambar/bg-hp.jpg'); */
     }
-  });
+}
 
-  document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape') closeLightbox();
-  });
-
-  // Tambahkan di script yang sudah ada
-document.addEventListener('DOMContentLoaded', function() {
-  const galleryRows = document.querySelectorAll('.gallery-row');
-  
-  galleryRows.forEach(gallery => {
-    // Add swipe indicators
-    let isScrolling;
+/* Background khusus untuk PC/Tablet */
+@media (min-width: 769px) {
+    body {
+        background-color: #a4d4b7;
+        background-image: url(gambar/bg1.png); /* Gambar khusus PC */
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
     
-    gallery.addEventListener('scroll', function() {
-      // Clear timeout saat scroll
-      window.clearTimeout(isScrolling);
-      
-      // Set timeout untuk detect scroll end
-      isScrolling = setTimeout(function() {
-        gallery.classList.remove('scrolling');
-      }, 66);
-      
-      gallery.classList.add('scrolling');
-    });
-  });
-});
+    .container {
+        max-width: 1200px;
+        padding: 40px;
+        border-radius: 20px;
+    }
+}
 
-// Tambahkan di script yang sudah ada
-document.addEventListener('DOMContentLoaded', function() {
-    const mapIframes = document.querySelectorAll('.map-box iframe');
-    
-    mapIframes.forEach(iframe => {
-        // Force reload iframe jika tidak load
-        setTimeout(() => {
-            if (iframe.contentWindow && iframe.contentWindow.document.body.innerHTML === '') {
-                const src = iframe.src;
-                iframe.src = '';
-                setTimeout(() => {
-                    iframe.src = src;
-                }, 100);
-            }
-        }, 2000);
-        
-        // Tambahkan class loaded ketika iframe selesai load
-        iframe.addEventListener('load', function() {
-            this.classList.add('loaded');
-        });
-    });
-});
-
-</script>
-</body>
-</html>
+/* Background khusus untuk PC sangat besar */
+@media (min-width: 1200px) {
+    body {
+        background-image: url(gambar/bgweb.jpg); /* Gambar HD untuk PC besar */
+    }
+}
